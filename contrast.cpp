@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     
     clock_t start_time = clock(); // Start global time of the application 
     if(argc<3) printf("not sufficient arguments\n");
-    else printf("The arguments are %s %s",argv[1],argv[2]);
+    else printf("The arguments are %s %s\n",argv[1],argv[2]);
             
     printf("Running contrast enhancement for gray-scale images with %d threads.\n", numThreadsPerBlock);
     img_ibuf_g = read_pgm(argv[1]);//pgm image
