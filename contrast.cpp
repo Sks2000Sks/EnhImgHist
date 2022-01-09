@@ -44,7 +44,7 @@ void run_cpu_color_test(PPM_IMG img_in,char *argv[])
     float total_hsl_time = ((float)(stop_hsl_time - start_hsl_time))/(CLOCKS_PER_SEC/1000);
     
     printf("HSL processing time: %f (ms)\n", total_hsl_time); 
-    write_ppm(img_obuf_hsl,  argv[2]+"out_hsl.ppm");
+    write_ppm(img_obuf_hsl,  strcat(argv[2],"out_hsl.ppm"));
 
     clock_t start_yuv_time = clock();
     img_obuf_yuv = contrast_enhancement_c_yuv(img_in);
@@ -54,7 +54,7 @@ void run_cpu_color_test(PPM_IMG img_in,char *argv[])
 
     printf("YUV processing time: %f (ms)\n", total_yuv_time);
     
-    write_ppm(img_obuf_yuv, argv[2]+"out_yuv.ppm");
+    write_ppm(img_obuf_yuv, strcat(argv[2],"out_yuv.ppm"));
     
     free_ppm(img_obuf_hsl);
     free_ppm(img_obuf_yuv);
@@ -75,7 +75,7 @@ void run_cpu_gray_test(PGM_IMG img_in,char *argv[])
 
     printf("Processing gray image time: %f (ms)\n", total_time);
     
-    write_pgm(img_obuf,  argv[1]+"out.pgm");
+    write_pgm(img_obuf,  strcat(argv[1],"out.pgm"));
     free_pgm(img_obuf);
 }
 
