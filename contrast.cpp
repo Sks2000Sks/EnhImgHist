@@ -7,13 +7,13 @@
 void run_cpu_color_test(PPM_IMG img_in,char *argv[]);
 void run_cpu_gray_test(PGM_IMG img_in,char *argv[]);
 
-int main(int argc, char *argv[],)
+int main(int argc, char *argv[])
 {
     PGM_IMG img_ibuf_g;//gray scale image
     PPM_IMG img_ibuf_c;//color image
     
     clock_t start_time = clock(); // Start global time of the application 
-    if(argc<3) printf("not sufficient arguments\n")
+    if(argc<3) printf("not sufficient arguments\n");
     else printf("The arguments are %s %s",argv[1],argv[2]);
             
     printf("Running contrast enhancement for gray-scale images with %d threads.\n", numThreadsPerBlock);
