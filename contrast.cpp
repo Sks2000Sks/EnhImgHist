@@ -4,8 +4,8 @@
 #include "hist-equ.h"
 #include "time.h"
 
-void run_cpu_color_test(PPM_IMG img_in);
-void run_cpu_gray_test(PGM_IMG img_in);
+void run_cpu_color_test(PPM_IMG img_in,char *argv[]);
+void run_cpu_gray_test(PGM_IMG img_in,char *argv[]);
 
 int main(int argc, char *argv[])
 {
