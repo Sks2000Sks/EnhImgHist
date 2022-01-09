@@ -7,7 +7,7 @@
 void run_cpu_color_test(PPM_IMG img_in,char *argv[]);
 void run_cpu_gray_test(PGM_IMG img_in,char *argv[]);
 
-int main(int argc, char *argv[],argv[])
+int main(int argc, char *argv[],)
 {
     PGM_IMG img_ibuf_g;//gray scale image
     PPM_IMG img_ibuf_c;//color image
