@@ -7,7 +7,7 @@
 void run_cpu_color_test(PPM_IMG img_in);
 void run_cpu_gray_test(PGM_IMG img_in);
 
-int main()
+int main(int argc, char *argv[])
 {
     PGM_IMG img_ibuf_g;//gray scale image
     PPM_IMG img_ibuf_c;//color image
@@ -15,12 +15,12 @@ int main()
     clock_t start_time = clock(); // Start global time of the application 
 
     printf("Running contrast enhancement for gray-scale images with %d threads.\n", numThreadsPerBlock);
-    img_ibuf_g = read_pgm("in.pgm");
+    img_ibuf_g = read_pgm(argv[1]);//pgm image
     run_cpu_gray_test(img_ibuf_g);
     free_pgm(img_ibuf_g);
 
     printf("Running contrast enhancement for color images with %d threads.\n", numThreadsPerBlock);
-    img_ibuf_c = read_ppm("in.ppm");
+    img_ibuf_c = read_ppm(argv[2]);//ppm image
     run_cpu_color_test(img_ibuf_c);
     free_ppm(img_ibuf_c);
 
@@ -44,7 +44,7 @@ void run_cpu_color_test(PPM_IMG img_in)
     float total_hsl_time = ((float)(stop_hsl_time - start_hsl_time))/(CLOCKS_PER_SEC/1000);
     
     printf("HSL processing time: %f (ms)\n", total_hsl_time); 
-    write_ppm(img_obuf_hsl, "out_hsl.ppm");
+    write_ppm(img_obuf_hsl,  argv[2]+"out_hsl.ppm");
 
     clock_t start_yuv_time = clock();
     img_obuf_yuv = contrast_enhancement_c_yuv(img_in);
@@ -54,7 +54,7 @@ void run_cpu_color_test(PPM_IMG img_in)
 
     printf("YUV processing time: %f (ms)\n", total_yuv_time);
     
-    write_ppm(img_obuf_yuv, "out_yuv.ppm");
+    write_ppm(img_obuf_yuv, argv[2]+"out_yuv.ppm");
     
     free_ppm(img_obuf_hsl);
     free_ppm(img_obuf_yuv);
@@ -75,7 +75,7 @@ void run_cpu_gray_test(PGM_IMG img_in)
 
     printf("Processing gray image time: %f (ms)\n", total_time);
     
-    write_pgm(img_obuf, "out.pgm");
+    write_pgm(img_obuf,  argv[1]+"out.pgm");
     free_pgm(img_obuf);
 }
 
