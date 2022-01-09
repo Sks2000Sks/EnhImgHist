@@ -16,12 +16,12 @@ int main(int argc, char *argv[])
 
     printf("Running contrast enhancement for gray-scale images with %d threads.\n", numThreadsPerBlock);
     img_ibuf_g = read_pgm(argv[1]);//pgm image
-    run_cpu_gray_test(img_ibuf_g);
+    run_cpu_gray_test(img_ibuf_g,argv);
     free_pgm(img_ibuf_g);
 
     printf("Running contrast enhancement for color images with %d threads.\n", numThreadsPerBlock);
     img_ibuf_c = read_ppm(argv[2]);//ppm image
-    run_cpu_color_test(img_ibuf_c);
+    run_cpu_color_test(img_ibuf_c,argv);
     free_ppm(img_ibuf_c);
 
     clock_t stop_time = clock(); // Stop global time of the application
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-void run_cpu_color_test(PPM_IMG img_in)
+void run_cpu_color_test(PPM_IMG img_in,char *argv[])
 {
     PPM_IMG img_obuf_hsl, img_obuf_yuv;//outbuffers for hsl and yuv images of the color image
     
@@ -60,7 +60,7 @@ void run_cpu_color_test(PPM_IMG img_in)
     free_ppm(img_obuf_yuv);
 }
 
-void run_cpu_gray_test(PGM_IMG img_in)
+void run_cpu_gray_test(PGM_IMG img_in,char *argv[])
 {
     PGM_IMG img_obuf;
     
